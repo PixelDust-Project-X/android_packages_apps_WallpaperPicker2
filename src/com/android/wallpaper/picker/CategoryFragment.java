@@ -39,6 +39,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -547,13 +548,9 @@ public class CategoryFragment extends ToolbarFragment {
             }
             if (attributions.size() > 1) {
                 mWallpaperSubtitle.setText(attributions.get(1));
-            } else {
-                mWallpaperSubtitle.setVisibility(View.INVISIBLE);
             }
             if (attributions.size() > 2) {
                 mWallpaperSubtitle2.setText(attributions.get(2));
-            } else {
-                mWallpaperSubtitle2.setVisibility(View.INVISIBLE);
             }
         }
 
@@ -796,10 +793,16 @@ public class CategoryFragment extends ToolbarFragment {
                 mLockWallpaperTitle.setText(lockAttributions.get(0));
             }
             if (lockAttributions.size() > 1) {
+                mLockWallpaperSubtitle1.setVisibility(View.VISIBLE);
                 mLockWallpaperSubtitle1.setText(lockAttributions.get(1));
+            } else {
+                mLockWallpaperSubtitle1.setVisibility(View.GONE);
             }
             if (lockAttributions.size() > 2) {
+                mLockWallpaperSubtitle2.setVisibility(View.VISIBLE);
                 mLockWallpaperSubtitle2.setText(lockAttributions.get(2));
+            } else {
+                mLockWallpaperSubtitle2.setVisibility(View.GONE);
             }
 
             final String lockActionUrl = lockWallpaper.getActionUrl(appContext);
@@ -852,7 +855,7 @@ public class CategoryFragment extends ToolbarFragment {
      */
     private class CategoryHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Category mCategory;
-        private RelativeLayout mTileLayout;
+        private LinearLayout mTileLayout;
         private ImageView mImageView;
         private ImageView mOverlayIconView;
         private TextView mTitleView;
